@@ -1,2 +1,2 @@
 export { container } from './container';
-export { TOKENS } from './tokens';
+export { registerProductModule } from './modules/product.module';

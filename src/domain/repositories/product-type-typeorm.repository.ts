@@ -1,14 +1,17 @@
-import { Repository } from 'typeorm';
-import { AppDataSource } from '../../config/data-source';
+import { inject, injectable } from 'tsyringe';
+import { DataSource, Repository } from 'typeorm';
 import { Product } from '../entities';
 import {
   IProductRepository, ProductFilter, Pagination, Sort,
   CreateProductAttributes, UpdateProductPatch
 } from './index';
 
+@injectable()
 export class ProductTypeOrmRepository implements IProductRepository {
   private readonly repo: Repository<Product>;
-  constructor() { this.repo = AppDataSource.getRepository(Product); }
+  constructor(@inject('DataSource') dataSource: DataSource) {
+    this.repo = dataSource.getRepository(Product);
+  }
 
   async create(attributes: CreateProductAttributes): Promise<Product> {
     const entity = this.repo.create(attributes);

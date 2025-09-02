@@ -1,3 +1,4 @@
+import { inject, injectable } from 'tsyringe';
 import { Product, ProductStatus } from '../entities';
 import {
   IProductRepository,
@@ -8,8 +9,11 @@ import {
   UpdateProductPatch,
 } from '../repositories';
 
+@injectable()
 export class ProductService {
-  constructor(private readonly repo: IProductRepository) {}
+  constructor(
+      @inject('IProductRepository') private readonly repo: IProductRepository
+    ) {}
 
   async create(attrs: CreateProductAttributes): Promise<Product> {
     const exists = await this.repo.findBySku(attrs.sku);

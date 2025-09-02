@@ -21,6 +21,7 @@
     "morgan": "^1.10.0",
     "pg": "^8.11.5",
     "reflect-metadata": "^0.2.2",
+    "tsyringe": "^4.10.0",
     "typeorm": "^0.3.20"
   },
   "devDependencies": {

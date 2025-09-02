@@ -1,0 +1,37 @@
+{
+    "name": "warehouse-backend",
+    "version": "1.0.0",
+    "private": true,
+    "license": "MIT",
+    "scripts": {
+      "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+      "build": "tsc -p tsconfig.json",
+      "lint": "echo \"(Add ESLint config if desired)\"",
+      "test": "jest --passWithNoTests",
+      "test:unit": "jest --passWithNoTests --runTestsByPath test/unit",
+      "test:integration": "jest --passWithNoTests --runTestsByPath test/integration",
+    },
+    "dependencies": {
+      "class-transformer": "^0.5.1",
+      "class-validator": "^0.14.1",
+      "cors": "^2.8.5",
+      "express": "^4.19.2",
+      "helmet": "^7.1.0",
+      "morgan": "^1.10.0",
+      "pg": "^8.11.5",
+      "reflect-metadata": "^0.2.2",
+      "typeorm": "^0.3.20"
+    },
+    "devDependencies": {
+      "@types/express": "^4.17.21",
+      "@types/jest": "^29.5.12",
+      "@types/node": "^20.12.12",
+      "@types/supertest": "^2.0.16",
+      "jest": "^29.7.0",
+      "supertest": "^7.0.0",
+      "ts-jest": "^29.1.2",
+      "ts-node": "^10.9.2",
+      "ts-node-dev": "^2.0.0",
+      "typescript": "^5.4.5"
+    }
+  }

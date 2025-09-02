@@ -2,13 +2,13 @@ import 'reflect-metadata';
 import { container as tsyringe } from 'tsyringe';
 import { DataSource } from 'typeorm';
 import { AppDataSource } from '../../config/data-source';
-import { TOKENS } from './tokens';
-import { IProductRepository } from '../../domain/repositories/interfaces';
-import { ProductTypeOrmRepository } from '../../domain/repositories';
-import { ProductService } from '../../domain/services';
+import { registerProductModule } from './modules/product.module';
 
-tsyringe.register<DataSource>(TOKENS.DataSource, { useValue: AppDataSource });
-tsyringe.register<IProductRepository>(TOKENS.IProductRepository, { useClass: ProductTypeOrmRepository });
-tsyringe.register(ProductService, { useClass: ProductService });
+// Register shared infrastructure first
+tsyringe.register<DataSource>('DataSource', { useValue: AppDataSource });
 
+// Register feature modules
+registerProductModule(tsyringe);
+
+// Export the configured container
 export const container = tsyringe;
